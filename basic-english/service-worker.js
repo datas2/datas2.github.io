@@ -11,6 +11,8 @@ const PRECACHE_URLS = [
 	"/basic-english/style.css",
 	"/basic-english/words.json",
 	"/basic-english/offline.html", // offline page
+	"/basic-english/icons/icon-32.png",
+	"/basic-english/icons/icon-180.png",
 	// add other important assets (images, fonts, etc.)
 ];
 

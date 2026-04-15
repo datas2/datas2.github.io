@@ -1,18 +1,93 @@
 <!doctype html>
-
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Basic English</title>
+		<title>Basic English Flashcards</title>
+
+		<!-- PWA -->
 		<link rel="manifest" href="manifest.json" />
 		<meta name="theme-color" content="#000000" />
-		<link rel="stylesheet" href="styles.css" />
 		<link rel="icon" href="/icons/icon-192.png" />
+
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous"
+		/>
+
+		<!-- Custom styles -->
+		<link rel="stylesheet" href="style.css" />
 	</head>
-	<body>
-		<h1>Basic English</h1>
-		<p>Welcome to the Basic English app!</p>
+	<body class="bg-light d-flex flex-column min-vh-100">
+		<header class="py-3 mb-3 border-bottom bg-white shadow-sm">
+			<div class="container">
+				<h1 class="h3 mb-0 text-center">Basic English – 850 Words</h1>
+			</div>
+		</header>
+
+		<main class="flex-grow-1">
+			<div
+				class="container d-flex flex-column align-items-center justify-content-center"
+			>
+				<section
+					id="flashcard"
+					class="card shadow-sm w-100"
+					style="max-width: 480px"
+				>
+					<div class="card-body">
+						<div class="mb-3 text-center">
+							<div class="fs-2 fw-semibold mb-2" id="word">
+								Loading...
+							</div>
+							<div class="fs-5 text-muted" id="meaning"></div>
+						</div>
+
+						<div class="d-flex gap-2 justify-content-between mt-4">
+							<button
+								id="btn-known"
+								type="button"
+								class="btn btn-success flex-fill"
+							>
+								I knew it
+							</button>
+							<button
+								id="btn-unknown"
+								type="button"
+								class="btn btn-outline-danger flex-fill"
+							>
+								I didn’t know
+							</button>
+						</div>
+					</div>
+				</section>
+
+				<section class="mt-3 w-100" style="max-width: 480px">
+					<div class="card border-0 bg-transparent">
+						<div class="card-body py-2 px-0">
+							<p
+								id="progress"
+								class="mb-0 text-center text-muted small"
+							>
+								Progress: 0% (Seen: 0, Correct: 0, Incorrect: 0)
+							</p>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<footer class="py-3 mt-4 bg-white border-top">
+			<div class="container">
+				<p class="mb-0 text-center text-muted small">
+					Practice Ogden’s 850 Basic English words anywhere, even
+					offline.
+				</p>
+			</div>
+		</footer>
+
 		<script src="app.js"></script>
 	</body>
 </html>

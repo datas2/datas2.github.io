@@ -1,19 +1,19 @@
 const CACHE_VERSION = "v1";
 const CACHE_NAME = `basic-english-cache-${CACHE_VERSION}`;
 
-// Liste aqui os arquivos essenciais para o app funcionar offline.
-// Ajuste os paths conforme a estrutura do seu repositório.
+// List here the essential files for the app to work offline.
+// Adjust the paths according to your repository structure.
 const PRECACHE_URLS = [
-	"/basic-english/", // raiz (pode ser /basic-english/ se estiver em subpath)
-	"/basic-english/app.js", // JS principal
-	"/basic-english/index.html", // página principal
+	"/basic-english/", // root (can be /basic-english/ if in subpath)
+	"/basic-english/app.js", // main JS
+	"/basic-english/index.html", // main page
 	"/basic-english/manifest.json", // manifest
-	"/basic-english/styles.css", // CSS principal
-	"/basic-english/words.json", // dados de palavras
-	// adicione outros assets importantes (imagens, fontes, etc.)
+	"/basic-english/style.css", // main CSS
+	"/basic-english/words.json", // word data
+	// add other important assets (images, fonts, etc.)
 ];
 
-// Instalação: pré-cache dos assets essenciais
+// Installation: pre-cache essential assets
 self.addEventListener("install", (event) => {
 	event.waitUntil(
 		caches
@@ -23,7 +23,7 @@ self.addEventListener("install", (event) => {
 	);
 });
 
-// Ativação: limpa caches antigos
+// Activation: clean up old caches
 self.addEventListener("activate", (event) => {
 	event.waitUntil(
 		caches
@@ -43,13 +43,13 @@ self.addEventListener("activate", (event) => {
 	);
 });
 
-// Estratégia de cache: "cache-first, fallback to network"
-// 1. Tenta responder do cache.
-// 2. Se não tiver, busca na rede e salva no cache para uso futuro.
+// Cache strategy: "cache-first, fallback to network"
+// 1. Try to respond from the cache.
+// 2. If not available, fetch from the network and cache it for future use.
 self.addEventListener("fetch", (event) => {
 	const { request } = event;
 
-	// Opcional: ignore chamadas de outros domínios ou métodos não-GET
+	// Optional: ignore requests from other domains or non-GET methods
 	if (
 		request.method !== "GET" ||
 		!request.url.startsWith(self.location.origin)
@@ -65,7 +65,7 @@ self.addEventListener("fetch", (event) => {
 
 			return fetch(request)
 				.then((networkResponse) => {
-					// Se a resposta não for válida, retorna direto
+					// If the response is not valid, return it directly
 					if (
 						!networkResponse ||
 						networkResponse.status !== 200 ||
@@ -74,7 +74,7 @@ self.addEventListener("fetch", (event) => {
 						return networkResponse;
 					}
 
-					// Clona a resposta antes de colocar em cache
+					// Clone the response before caching it
 					const responseToCache = networkResponse.clone();
 
 					caches.open(CACHE_NAME).then((cache) => {
@@ -84,10 +84,10 @@ self.addEventListener("fetch", (event) => {
 					return networkResponse;
 				})
 				.catch(() => {
-					// Aqui você pode retornar uma página offline customizada se quiser
+					// Here you can return a custom offline page if you want
 					// return caches.match('/offline.html');
 					return new Response(
-						"Você está offline e este recurso não está em cache.",
+						"You are offline and this resource is not cached.",
 						{
 							status: 503,
 							headers: {

@@ -1,0 +1,48 @@
+/* Complement Bootstrap with some simple visual adjustments */
+
+body {
+	font-family:
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		sans-serif;
+}
+
+/* Ensure content is reasonably centered on tall screens */
+main {
+	padding: 1rem 0 2rem;
+}
+
+/* Flashcard */
+#flashcard .card-body {
+	padding: 2rem 1.5rem;
+}
+
+/* Highlighted word */
+#word {
+	word-wrap: break-word;
+}
+
+/* Meaning with pleasant line breaks */
+#meaning {
+	white-space: pre-wrap;
+}
+
+/* Buttons occupying space well on small screens */
+#btn-known,
+#btn-unknown {
+	font-weight: 500;
+}
+
+/* Discreet progress */
+#progress {
+	color: #6c757d;
+}
+
+/* On very small screens, slightly reduce the card padding */
+@media (max-width: 400px) {
+	#flashcard .card-body {
+		padding: 1.5rem 1rem;
+	}
+}

@@ -14,50 +14,40 @@ if ("serviceWorker" in navigator) {
 // DOM ELEMENT REFERENCES
 // -------------------------
 
-const wordEl = document.getElementById("word");
+const wordFrontEl = document.getElementById("word");
+const wordBackEl = document.getElementById("word-back");
 const meaningEl = document.getElementById("meaning");
+const btnShowMeaning = document.getElementById("btn-show-meaning");
 const btnKnown = document.getElementById("btn-known");
 const btnUnknown = document.getElementById("btn-unknown");
 const progressEl = document.getElementById("progress");
+const flashcardContainer = document.getElementById("flashcard");
 
 // -------------------------
 // APP STATE
 // -------------------------
 
-// All words loaded from words.json
 let words = [];
-
-// Index of the current word in the words array
 let currentIndex = 0;
 
-// Progress data stored in localStorage
-// Structure:
-// {
-//   seen: { [word]: true },
-//   correct: { [word]: true },
-//   incorrect: { [word]: true }
-// }
 let progress = {
 	seen: {},
 	correct: {},
 	incorrect: {},
 };
 
-// Key used in localStorage
 const STORAGE_KEY = "basic_english_progress_v1";
 
 // -------------------------
 // INITIALIZATION
 // -------------------------
 
-// Load progress from localStorage (if any)
 function loadProgress() {
 	const saved = localStorage.getItem(STORAGE_KEY);
 	if (!saved) return;
 
 	try {
 		const parsed = JSON.parse(saved);
-		// Merge with default structure to be safe
 		progress = {
 			seen: parsed.seen || {},
 			correct: parsed.correct || {},
@@ -68,12 +58,10 @@ function loadProgress() {
 	}
 }
 
-// Save current progress to localStorage
 function saveProgress() {
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
 }
 
-// Fetch words from local words.json
 async function loadWords() {
 	try {
 		const response = await fetch("words.json");
@@ -87,16 +75,17 @@ async function loadWords() {
 		}
 
 		if (words.length === 0) {
-			wordEl.textContent = "No words found.";
+			wordFrontEl.textContent = "No words found.";
+			wordBackEl.textContent = "No words found.";
 			meaningEl.textContent = "";
 			return;
 		}
 
-		// Start by showing a random word that is not mastered
 		showNextWord();
 	} catch (err) {
 		console.error(err);
-		wordEl.textContent = "Error loading words.";
+		wordFrontEl.textContent = "Error loading words.";
+		wordBackEl.textContent = "Error loading words.";
 		meaningEl.textContent = "";
 	}
 }
@@ -105,16 +94,11 @@ async function loadWords() {
 // PROGRESS & SELECTION LOGIC
 // -------------------------
 
-// Determine if a word is "mastered".
-// Simple rule: mastered if the user has marked it "known" at least once
-// and has never marked it "unknown". You can adjust this heuristic.
 function isMastered(wordObj) {
 	const w = wordObj.word;
 	return !!progress.correct[w] && !progress.incorrect[w];
 }
 
-// Pick a random index from the words array for a word that is not mastered.
-// If all words are mastered, we still pick a random word so the app keeps working.
 function pickNextIndex() {
 	const notMasteredIndices = [];
 
@@ -125,7 +109,6 @@ function pickNextIndex() {
 	});
 
 	if (notMasteredIndices.length === 0) {
-		// All words are mastered; pick a random word from all words
 		return Math.floor(Math.random() * words.length);
 	}
 
@@ -133,20 +116,18 @@ function pickNextIndex() {
 	return notMasteredIndices[randomPos];
 }
 
-// Update the progress element with a percentage and counts
 function updateProgressDisplay() {
 	const totalWords = words.length;
 	if (totalWords === 0) {
-		progressEl.textContent = "Progress: 0% (0 / 0)";
+		progressEl.textContent =
+			"Progress: 0% (Seen: 0, Correct: 0, Incorrect: 0)";
 		return;
 	}
 
-	// Words seen are the union of keys in correct and incorrect and seen
 	const seenCount = Object.keys(progress.seen).length;
 	const correctCount = Object.keys(progress.correct).length;
 	const incorrectCount = Object.keys(progress.incorrect).length;
 
-	// Progress as percentage of words seen that the user has gotten correct at least once
 	const percentage =
 		totalWords > 0 ? Math.round((correctCount / totalWords) * 100) : 0;
 
@@ -157,20 +138,25 @@ function updateProgressDisplay() {
 // UI UPDATE FUNCTIONS
 // -------------------------
 
-// Show the word currently at currentIndex
 function showCurrentWord() {
 	if (!words.length) return;
 
 	const currentWord = words[currentIndex];
-	wordEl.textContent = currentWord.word;
+	// Frente e verso mostram a mesma palavra
+	wordFrontEl.textContent = currentWord.word;
+	wordBackEl.textContent = currentWord.word;
 	meaningEl.textContent = currentWord.meaning;
+
+	// Sempre começar mostrando a frente
+	if (flashcardContainer) {
+		flashcardContainer.classList.remove("flipped");
+	}
+
 	updateProgressDisplay();
 }
 
-// Choose and show the next word (not mastered if possible)
 function showNextWord() {
 	if (!words.length) return;
-
 	currentIndex = pickNextIndex();
 	showCurrentWord();
 }
@@ -179,7 +165,13 @@ function showNextWord() {
 // EVENT HANDLERS
 // -------------------------
 
-// Handle "I knew it"
+function handleShowMeaning() {
+	if (!words.length) return;
+	if (flashcardContainer) {
+		flashcardContainer.classList.add("flipped");
+	}
+}
+
 function handleKnown() {
 	if (!words.length) return;
 	const currentWordObj = words[currentIndex];
@@ -187,15 +179,12 @@ function handleKnown() {
 
 	progress.seen[w] = true;
 	progress.correct[w] = true;
-	// If user knew it, we can optionally clear incorrect mark
-	// (depends on desired behavior; here we keep it simple)
 	delete progress.incorrect[w];
 
 	saveProgress();
 	showNextWord();
 }
 
-// Handle "I didn't know"
 function handleUnknown() {
 	if (!words.length) return;
 	const currentWordObj = words[currentIndex];
@@ -203,8 +192,6 @@ function handleUnknown() {
 
 	progress.seen[w] = true;
 	progress.incorrect[w] = true;
-	// Optionally we can clear correct, or keep both markers.
-	// Here we keep correct as is, so a tricky word can have both.
 	saveProgress();
 	showNextWord();
 }
@@ -213,6 +200,9 @@ function handleUnknown() {
 // WIRE UP EVENTS
 // -------------------------
 
+if (btnShowMeaning) {
+	btnShowMeaning.addEventListener("click", handleShowMeaning);
+}
 if (btnKnown) {
 	btnKnown.addEventListener("click", handleKnown);
 }

@@ -4,12 +4,13 @@ const CACHE_NAME = `basic-english-cache-${CACHE_VERSION}`;
 // List here the essential files for the app to work offline.
 // Adjust the paths according to your repository structure.
 const PRECACHE_URLS = [
-	"/basic-english/", // root (can be /basic-english/ if in subpath)
-	"/basic-english/app.js", // main JS
-	"/basic-english/index.html", // main page
-	"/basic-english/manifest.json", // manifest
-	"/basic-english/style.css", // main CSS
-	"/basic-english/words.json", // word data
+	"/basic-english/", // root
+	"/basic-english/app.js",
+	"/basic-english/index.html",
+	"/basic-english/manifest.json",
+	"/basic-english/style.css",
+	"/basic-english/words.json",
+	"/basic-english/offline.html", // offline page
 	// add other important assets (images, fonts, etc.)
 ];
 
@@ -44,12 +45,10 @@ self.addEventListener("activate", (event) => {
 });
 
 // Cache strategy: "cache-first, fallback to network"
-// 1. Try to respond from the cache.
-// 2. If not available, fetch from the network and cache it for future use.
 self.addEventListener("fetch", (event) => {
 	const { request } = event;
 
-	// Optional: ignore requests from other domains or non-GET methods
+	// Ignore non-GET or cross-origin requests
 	if (
 		request.method !== "GET" ||
 		!request.url.startsWith(self.location.origin)
@@ -65,7 +64,6 @@ self.addEventListener("fetch", (event) => {
 
 			return fetch(request)
 				.then((networkResponse) => {
-					// If the response is not valid, return it directly
 					if (
 						!networkResponse ||
 						networkResponse.status !== 200 ||
@@ -74,7 +72,6 @@ self.addEventListener("fetch", (event) => {
 						return networkResponse;
 					}
 
-					// Clone the response before caching it
 					const responseToCache = networkResponse.clone();
 
 					caches.open(CACHE_NAME).then((cache) => {
@@ -83,19 +80,25 @@ self.addEventListener("fetch", (event) => {
 
 					return networkResponse;
 				})
-				.catch(() => {
-					// Here you can return a custom offline page if you want
-					// return caches.match('/offline.html');
-					return new Response(
-						"You are offline and this resource is not cached.",
-						{
-							status: 503,
-							headers: {
-								"Content-Type": "text/plain; charset=utf-8",
-							},
-						},
-					);
-				});
+				.catch(() =>
+					// On failure (offline and not cached), show offline page
+					caches
+						.match("/basic-english/offline.html")
+						.then((offline) => {
+							if (offline) return offline;
+
+							return new Response(
+								"You are offline and this resource is not cached.",
+								{
+									status: 503,
+									headers: {
+										"Content-Type":
+											"text/plain; charset=utf-8",
+									},
+								},
+							);
+						}),
+				);
 		}),
 	);
 });

@@ -34,32 +34,70 @@
 			>
 				<section
 					id="flashcard"
-					class="card shadow-sm w-100"
+					class="card-container w-100"
 					style="max-width: 480px"
 				>
-					<div class="card-body">
-						<div class="mb-3 text-center">
-							<div class="fs-2 fw-semibold mb-2" id="word">
-								Loading...
+					<div class="card-inner">
+						<!-- FRONT: only the word + show meaning -->
+						<div class="card-face card-front card shadow-sm">
+							<div class="card-body d-flex flex-column">
+								<div class="mb-3 text-center">
+									<div
+										class="fs-2 fw-semibold mb-2"
+										id="word"
+									>
+										Loading...
+									</div>
+								</div>
+								<div
+									class="d-flex justify-content-center mt-auto"
+								>
+									<button
+										id="btn-show-meaning"
+										type="button"
+										class="btn btn-primary px-4"
+									>
+										Show meaning
+									</button>
+								</div>
 							</div>
-							<div class="fs-5 text-muted" id="meaning"></div>
 						</div>
 
-						<div class="d-flex gap-2 justify-content-between mt-4">
-							<button
-								id="btn-known"
-								type="button"
-								class="btn btn-success flex-fill"
-							>
-								I knew it
-							</button>
-							<button
-								id="btn-unknown"
-								type="button"
-								class="btn btn-outline-danger flex-fill"
-							>
-								I didn’t know
-							</button>
+						<!-- BACK: word + meaning + known/unknown -->
+						<div class="card-face card-back card shadow-sm">
+							<div class="card-body d-flex flex-column">
+								<div class="mb-3 text-center">
+									<div
+										class="fs-2 fw-semibold mb-2"
+										id="word-back"
+									>
+										Loading...
+									</div>
+									<div
+										class="fs-5 text-muted"
+										id="meaning"
+									></div>
+								</div>
+
+								<div
+									class="d-flex gap-2 justify-content-between mt-auto"
+								>
+									<button
+										id="btn-known"
+										type="button"
+										class="btn btn-success flex-fill"
+									>
+										I knew it
+									</button>
+									<button
+										id="btn-unknown"
+										type="button"
+										class="btn btn-outline-danger flex-fill"
+									>
+										I didn’t know
+									</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>

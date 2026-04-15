@@ -21,7 +21,8 @@ const btnShowMeaning = document.getElementById("btn-show-meaning");
 const btnKnown = document.getElementById("btn-known");
 const btnUnknown = document.getElementById("btn-unknown");
 const btnReset = document.getElementById("btn-reset");
-const progressEl = document.getElementById("progress");
+const progressMainEl = document.getElementById("progress-main");
+const progressSrsEl = document.getElementById("progress-srs");
 const flashcardContainer = document.getElementById("flashcard");
 
 // -------------------------
@@ -206,19 +207,59 @@ function pickNextIndex() {
 function updateProgressDisplay() {
 	const totalWords = words.length;
 	if (totalWords === 0) {
-		progressEl.textContent =
-			"Progress: 0% (Seen: 0, Correct: 0, Incorrect: 0)";
+		if (progressMainEl) {
+			progressMainEl.textContent =
+				"Mastered: 0% • Seen: 0/0 • Accuracy: 0% (0✓ / 0✗)";
+		}
+		if (progressSrsEl) {
+			progressSrsEl.textContent = "Levels: B0 / I0 / A0 • Hard: 0";
+		}
 		return;
 	}
 
 	const seenCount = Object.keys(progress.seen).length;
 	const correctCount = Object.keys(progress.correct).length;
 	const incorrectCount = Object.keys(progress.incorrect).length;
+	const totalAnswers = correctCount + incorrectCount;
 
-	const percentage =
-		totalWords > 0 ? Math.round((correctCount / totalWords) * 100) : 0;
+	// mastered: once answered correctly at least once and never marked as incorrect
+	const masteredCount = words.filter(isMastered).length;
+	const masteredPercent = Math.round((masteredCount / totalWords) * 100);
 
-	progressEl.textContent = `Progress: ${percentage}% (Seen: ${seenCount}, Correct: ${correctCount}, Incorrect: ${incorrectCount})`;
+	// accuracy global
+	const accuracy =
+		totalAnswers > 0 ? Math.round((correctCount / totalAnswers) * 100) : 0;
+
+	// Distribution by level (SRS)
+	let beginner = 0; // strength <= 0
+	let intermediate = 0; // 1..3
+	let advanced = 0; // >= 4
+	let hard = 0; // strength <= -1
+
+	words.forEach((wordObj) => {
+		const w = wordObj.word;
+		const state = getSrsState(w);
+		const s = state.strength;
+
+		if (s <= 0) beginner += 1;
+		else if (s <= 3) intermediate += 1;
+		else advanced += 1;
+
+		if (s <= -1) hard += 1;
+	});
+
+	if (progressMainEl) {
+		progressMainEl.textContent =
+			`Mastered: ${masteredPercent}% ` +
+			`• Seen: ${seenCount}/${totalWords} ` +
+			`• Accuracy: ${accuracy}% (${correctCount}✓ / ${incorrectCount}✗)`;
+	}
+
+	if (progressSrsEl) {
+		progressSrsEl.textContent =
+			`Levels: B${beginner} / I${intermediate} / A${advanced} ` +
+			`• Hard: ${hard}`;
+	}
 }
 
 // -------------------------

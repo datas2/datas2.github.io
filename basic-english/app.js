@@ -40,6 +40,8 @@ let progress = {
 	srs: {
 		// [word]: { strength: number, lastSeen: number }
 	},
+	// daily stats: [YYYY-MM-DD]: { correct: number, incorrect: number }
+	daily: {},
 };
 
 const STORAGE_KEY = "basic_english_progress_v1";
@@ -59,6 +61,7 @@ function loadProgress() {
 			correct: parsed.correct || {},
 			incorrect: parsed.incorrect || {},
 			srs: parsed.srs || {},
+			daily: parsed.daily || {},
 		};
 	} catch (e) {
 		console.error("Failed to parse saved progress:", e);
@@ -75,6 +78,7 @@ function resetProgress() {
 		correct: {},
 		incorrect: {},
 		srs: {},
+		daily: {},
 	};
 	localStorage.removeItem(STORAGE_KEY);
 	updateProgressDisplay();
@@ -148,6 +152,64 @@ function updateSrsOnUnknown(word) {
 	const state = getSrsState(word);
 	state.strength = Math.max(MIN_STRENGTH, state.strength - 1);
 	state.lastSeen = NOW();
+}
+
+// -------------------------
+// DAILY STATS
+// -------------------------
+
+function getTodayKey() {
+	// YYYY-MM-DD in local timezone
+	const d = new Date();
+	const yyyy = d.getFullYear();
+	const mm = String(d.getMonth() + 1).padStart(2, "0");
+	const dd = String(d.getDate()).padStart(2, "0");
+	return `${yyyy}-${mm}-${dd}`;
+}
+
+function updateDailyStats(isCorrect) {
+	const dayKey = getTodayKey();
+	if (!progress.daily[dayKey]) {
+		progress.daily[dayKey] = { correct: 0, incorrect: 0 };
+	}
+	if (isCorrect) {
+		progress.daily[dayKey].correct += 1;
+	} else {
+		progress.daily[dayKey].incorrect += 1;
+	}
+}
+
+function accuracyToBlue(accuracy) {
+	// accuracy: 0..1
+
+	// Let's define:
+	// 0% => dark blue (#003366)
+	// 50% => medium blue (#3366cc)
+	// 100% => light blue (#99ccff)
+
+	const stops = [
+		{ a: 0.0, color: [0, 51, 102] }, // 0%
+		{ a: 0.5, color: [51, 102, 204] }, // 50%
+		{ a: 1.0, color: [153, 204, 255] }, // 100%
+	];
+
+	// if unable to map (for safety), return medium blue
+	if (isNaN(accuracy)) accuracy = 0;
+	accuracy = Math.max(0, Math.min(1, accuracy));
+
+	// find interval
+	for (let i = 0; i < stops.length - 1; i++) {
+		const s1 = stops[i];
+		const s2 = stops[i + 1];
+		if (accuracy >= s1.a && accuracy <= s2.a) {
+			const t = (accuracy - s1.a) / (s2.a - s1.a);
+			const r = Math.round(s1.color[0] + t * (s2.color[0] - s1.color[0]));
+			const g = Math.round(s1.color[1] + t * (s2.color[1] - s1.color[1]));
+			const b = Math.round(s1.color[2] + t * (s2.color[2] - s1.color[2]));
+			return `rgb(${r}, ${g}, ${b})`;
+		}
+	}
+	return "rgb(51, 102, 204)";
 }
 
 // -------------------------
@@ -260,6 +322,48 @@ function updateProgressDisplay() {
 			`Levels: B${beginner} / I${intermediate} / A${advanced} ` +
 			`• Hard: ${hard}`;
 	}
+
+	renderDailyGraph();
+}
+
+function renderDailyGraph() {
+	const container = document.getElementById("daily-graph");
+	if (!container) return;
+
+	container.innerHTML = "";
+
+	const daysToShow = 30;
+	const now = new Date();
+
+	for (let i = daysToShow - 1; i >= 0; i--) {
+		const d = new Date(
+			now.getFullYear(),
+			now.getMonth(),
+			now.getDate() - i,
+		);
+		const yyyy = d.getFullYear();
+		const mm = String(d.getMonth() + 1).padStart(2, "0");
+		const dd = String(d.getDate()).padStart(2, "0");
+		const key = `${yyyy}-${mm}-${dd}`;
+
+		const cell = document.createElement("div");
+		cell.className = "daily-cell";
+
+		const stats = progress.daily[key];
+		if (stats && (stats.correct > 0 || stats.incorrect > 0)) {
+			const total = stats.correct + stats.incorrect;
+			const acc = stats.correct / total;
+			cell.style.backgroundColor = accuracyToBlue(acc);
+			cell.title = `${key}\nCorrect: ${stats.correct}\nIncorrect: ${stats.incorrect}\nAccuracy: ${Math.round(
+				acc * 100,
+			)}%`;
+		} else {
+			// gray (default no CSS) + tooltip
+			cell.title = `${key}\nNo study`;
+		}
+
+		container.appendChild(cell);
+	}
 }
 
 // -------------------------
@@ -312,6 +416,9 @@ function handleKnown() {
 	// SRS: reinforce and record the time
 	updateSrsOnKnown(w);
 
+	// Daily stats
+	updateDailyStats(true);
+
 	saveProgress();
 	showNextWord();
 }
@@ -326,6 +433,9 @@ function handleUnknown() {
 
 	// SRS: weaken and record the time
 	updateSrsOnUnknown(w);
+
+	// Daily stats
+	updateDailyStats(false);
 
 	saveProgress();
 	showNextWord();

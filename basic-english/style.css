@@ -82,3 +82,22 @@ main {
 		padding: 1.5rem 1rem;
 	}
 }
+
+/* ---------- Daily activity graph ---------- */
+
+#daily-graph {
+	max-width: 340px;
+	margin: 0 auto;
+}
+
+.daily-cell {
+	width: 14px;
+	height: 14px;
+	border-radius: 2px;
+	background-color: #e5e5e5; /* default: no study (gray) */
+}
+
+/* Optional: subtle border */
+.daily-cell {
+	border: 1px solid rgba(0, 0, 0, 0.03);
+}

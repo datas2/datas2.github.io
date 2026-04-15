@@ -35,6 +35,10 @@ let progress = {
 	seen: {},
 	correct: {},
 	incorrect: {},
+	// spaced repetition state
+	srs: {
+		// [word]: { strength: number, lastSeen: number }
+	},
 };
 
 const STORAGE_KEY = "basic_english_progress_v1";
@@ -53,6 +57,7 @@ function loadProgress() {
 			seen: parsed.seen || {},
 			correct: parsed.correct || {},
 			incorrect: parsed.incorrect || {},
+			srs: parsed.srs || {},
 		};
 	} catch (e) {
 		console.error("Failed to parse saved progress:", e);
@@ -61,6 +66,19 @@ function loadProgress() {
 
 function saveProgress() {
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+}
+
+function resetProgress() {
+	progress = {
+		seen: {},
+		correct: {},
+		incorrect: {},
+		srs: {},
+	};
+	localStorage.removeItem(STORAGE_KEY);
+	updateProgressDisplay();
+	// optional: choose a new word
+	showNextWord();
 }
 
 async function loadWords() {
@@ -92,6 +110,46 @@ async function loadWords() {
 }
 
 // -------------------------
+// Auxiliary SRS Functions
+// -------------------------
+const NOW = () => Date.now();
+
+// standard values for new words
+const DEFAULT_STRENGTH = 0;
+const MIN_STRENGTH = -3;
+const MAX_STRENGTH = 10;
+
+// works like: the higher the strength, the longer the target interval (in ms)
+function targetIntervalFromStrength(strength) {
+	// simple: 0 => 0 min, 1 => 5min, 2 => 30min, 3 => 2h, 4 => 1d, 5 => 3d, ...
+	const minutes = [0, 5, 30, 120, 1440, 4320, 10080]; // increasing
+	const idx = Math.max(0, Math.min(minutes.length - 1, strength));
+	return minutes[idx] * 60 * 1000;
+}
+
+function getSrsState(word) {
+	if (!progress.srs[word]) {
+		progress.srs[word] = {
+			strength: DEFAULT_STRENGTH,
+			lastSeen: 0,
+		};
+	}
+	return progress.srs[word];
+}
+
+function updateSrsOnKnown(word) {
+	const state = getSrsState(word);
+	state.strength = Math.min(MAX_STRENGTH, state.strength + 1);
+	state.lastSeen = NOW();
+}
+
+function updateSrsOnUnknown(word) {
+	const state = getSrsState(word);
+	state.strength = Math.max(MIN_STRENGTH, state.strength - 1);
+	state.lastSeen = NOW();
+}
+
+// -------------------------
 // PROGRESS & SELECTION LOGIC
 // -------------------------
 
@@ -101,20 +159,48 @@ function isMastered(wordObj) {
 }
 
 function pickNextIndex() {
-	const notMasteredIndices = [];
+	if (!words.length) return 0;
 
-	words.forEach((w, idx) => {
-		if (!isMastered(w)) {
-			notMasteredIndices.push(idx);
+	const now = NOW();
+
+	// we calculate a "priorityScore" for each word:
+	// the lower the score, the more urgent it is to review.
+	let bestIdx = 0;
+	let bestScore = Infinity;
+
+	words.forEach((wordObj, idx) => {
+		const w = wordObj.word;
+		const state = getSrsState(w);
+		const elapsed = now - (state.lastSeen || 0);
+		const targetInterval = targetIntervalFromStrength(state.strength);
+
+		// The higher the elapsed/targetInterval, the more overdue it is;
+		// we use the inverse as a "score" to prioritize those that are overdue
+		// and with low strength.
+		const overdueRatio = targetInterval > 0 ? elapsed / targetInterval : 1;
+		// low strength => more urgent review
+		const strengthPenalty = Math.max(0, -state.strength); // if negative, penalize
+
+		const score = 1 / (1 + overdueRatio) + strengthPenalty;
+
+		// We give a small bonus to never-seen words
+		if (!progress.seen[w]) {
+			// force it to appear earlier
+			const virginScore = -10;
+			if (virginScore < bestScore) {
+				bestScore = virginScore;
+				bestIdx = idx;
+				return;
+			}
+		}
+
+		if (score < bestScore) {
+			bestScore = score;
+			bestIdx = idx;
 		}
 	});
 
-	if (notMasteredIndices.length === 0) {
-		return Math.floor(Math.random() * words.length);
-	}
-
-	const randomPos = Math.floor(Math.random() * notMasteredIndices.length);
-	return notMasteredIndices[randomPos];
+	return bestIdx;
 }
 
 function updateProgressDisplay() {
@@ -182,6 +268,9 @@ function handleKnown() {
 	progress.correct[w] = true;
 	delete progress.incorrect[w];
 
+	// SRS: reinforce and record the time
+	updateSrsOnKnown(w);
+
 	saveProgress();
 	showNextWord();
 }
@@ -193,19 +282,11 @@ function handleUnknown() {
 
 	progress.seen[w] = true;
 	progress.incorrect[w] = true;
-	saveProgress();
-	showNextWord();
-}
 
-function resetProgress() {
-	progress = {
-		seen: {},
-		correct: {},
-		incorrect: {},
-	};
-	localStorage.removeItem(STORAGE_KEY);
-	updateProgressDisplay();
-	// optional: choose a new word
+	// SRS: weaken and record the time
+	updateSrsOnUnknown(w);
+
+	saveProgress();
 	showNextWord();
 }
 

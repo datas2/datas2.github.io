@@ -274,7 +274,8 @@ function updateProgressDisplay() {
 				"Mastered: 0% • Seen: 0/0 • Accuracy: 0% (0✓ / 0✗)";
 		}
 		if (progressSrsEl) {
-			progressSrsEl.textContent = "Levels: B0 / I0 / A0 • Hard: 0";
+			progressSrsEl.textContent =
+				"Levels: Beginner 0 • Intermediate 0 • Advanced 0 • Hard: 0";
 		}
 		return;
 	}
@@ -319,7 +320,7 @@ function updateProgressDisplay() {
 
 	if (progressSrsEl) {
 		progressSrsEl.textContent =
-			`Levels: B${beginner} / I${intermediate} / A${advanced} ` +
+			`Levels: Beginner ${beginner} • Intermediate ${intermediate} • Advanced ${advanced} ` +
 			`• Hard: ${hard}`;
 	}
 

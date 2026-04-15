@@ -20,6 +20,7 @@ const meaningEl = document.getElementById("meaning");
 const btnShowMeaning = document.getElementById("btn-show-meaning");
 const btnKnown = document.getElementById("btn-known");
 const btnUnknown = document.getElementById("btn-unknown");
+const btnReset = document.getElementById("btn-reset");
 const progressEl = document.getElementById("progress");
 const flashcardContainer = document.getElementById("flashcard");
 
@@ -142,12 +143,12 @@ function showCurrentWord() {
 	if (!words.length) return;
 
 	const currentWord = words[currentIndex];
-	// Frente e verso mostram a mesma palavra
+	// Front and back show the same word
 	wordFrontEl.textContent = currentWord.word;
 	wordBackEl.textContent = currentWord.word;
 	meaningEl.textContent = currentWord.meaning;
 
-	// Sempre começar mostrando a frente
+	// Always start by showing the front
 	if (flashcardContainer) {
 		flashcardContainer.classList.remove("flipped");
 	}
@@ -196,6 +197,18 @@ function handleUnknown() {
 	showNextWord();
 }
 
+function resetProgress() {
+	progress = {
+		seen: {},
+		correct: {},
+		incorrect: {},
+	};
+	localStorage.removeItem(STORAGE_KEY);
+	updateProgressDisplay();
+	// optional: choose a new word
+	showNextWord();
+}
+
 // -------------------------
 // WIRE UP EVENTS
 // -------------------------
@@ -208,6 +221,9 @@ if (btnKnown) {
 }
 if (btnUnknown) {
 	btnUnknown.addEventListener("click", handleUnknown);
+}
+if (btnReset) {
+	btnReset.addEventListener("click", resetProgress);
 }
 
 // -------------------------

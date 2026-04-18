@@ -398,5 +398,205 @@
     {
         "word": "yes",
         "meaning": "used to express agreement or affirmation"
+    },
+    {
+        "word": "awake",
+        "meaning": "not asleep; conscious and alert"
+    },
+    {
+        "word": "bad",
+        "meaning": "of poor quality or low standard"
+    },
+    {
+        "word": "bent",
+        "meaning": "curved or angled; not straight"
+    },
+    {
+        "word": "bitter",
+        "meaning": "having a sharp, unpleasant taste or smell"
+    },
+    {
+        "word": "blue",
+        "meaning": "having the color of the clear sky or the deep sea"
+    },
+    {
+        "word": "certain",
+        "meaning": "known for sure; established beyond doubt"
+    },
+    {
+        "word": "cold",
+        "meaning": "having a low temperature; not warm"
+    },
+    {
+        "word": "complete",
+        "meaning": "having all the necessary parts or elements; whole"
+    },
+    {
+        "word": "cruel",
+        "meaning": "causing pain or suffering to others; lacking compassion"
+    },
+    {
+        "word": "dark",
+        "meaning": "having little or no light; not bright"
+    },
+    {
+        "word": "dead",
+        "meaning": "no longer alive; having ceased to exist"
+    },
+    {
+        "word": "dear",
+        "meaning": "loved or cherished; valued highly"
+    },
+    {
+        "word": "delicate",
+        "meaning": "easily damaged or broken; fragile"
+    },
+    {
+        "word": "different",
+        "meaning": "not the same as another or each other; distinct"
+    },
+    {
+        "word": "dirty",
+        "meaning": "covered or marked with an unclean substance; not clean"
+    },
+    {
+        "word": "dry",
+        "meaning": "free from moisture or liquid; not wet"
+    },
+    {
+        "word": "false",
+        "meaning": "not true or correct; incorrect"
+    },
+    {
+        "word": "feeble",
+        "meaning": "lacking physical strength or energy; weak"
+    },
+    {
+        "word": "female",
+        "meaning": "of or relating to the sex that can produce offspring or bear young"
+    },
+    {
+        "word": "foolish",
+        "meaning": "lacking good sense or judgment; unwise"
+    },
+    {
+        "word": "future",
+        "meaning": "the time that is yet to come; the period of time after the present"
+    },
+    {
+        "word": "green",
+        "meaning": "having the color of growing grass or leaves"
+    },
+    {
+        "word": "ill",
+        "meaning": "not in good health; sick"
+    },
+    {
+        "word": "last",
+        "meaning": "coming after all others in time or order; final"
+    },
+    {
+        "word": "late",
+        "meaning": "occurring or arriving after the expected or usual time"
+    },
+    {
+        "word": "left",
+        "meaning": "on or toward the side of the body that is opposite to the right"
+    },
+    {
+        "word": "loose",
+        "meaning": "not firmly or tightly fixed in place; not tight"
+    },
+    {
+        "word": "loud",
+        "meaning": "producing a lot of noise; not quiet"
+    },
+    {
+        "word": "low",
+        "meaning": "not high; at a small distance from the ground or a base"
+    },
+    {
+        "word": "mixed",
+        "meaning": "consisting of different elements or types; combined"
+    },
+    {
+        "word": "narrow",
+        "meaning": "of small width in relation to length; not wide"
+    },
+    {
+        "word": "old",
+        "meaning": "having lived for a long time; not young"
+    },
+    {
+        "word": "opposite",
+        "meaning": "situated on the other side of something; facing something"
+    },
+    {
+        "word": "public",
+        "meaning": "relating to or affecting all people; not private"
+    },
+    {
+        "word": "rough",
+        "meaning": "having an uneven or irregular surface; not smooth"
+    },
+    {
+        "word": "sad",
+        "meaning": "feeling or showing sorrow; unhappy"
+    },
+    {
+        "word": "safe",
+        "meaning": "protected from or not exposed to danger; secure"
+    },
+    {
+        "word": "secret",
+        "meaning": "kept hidden from others; not known or seen by others"
+    },
+    {
+        "word": "short",
+        "meaning": "measuring a small distance from end to end; not long"
+    },
+    {
+        "word": "shut",
+        "meaning": "closed or fastened; not open"
+    },
+    {
+        "word": "simple",
+        "meaning": "easily understood or done; not complicated"
+    },
+    {
+        "word": "slow",
+        "meaning": "moving or operating at a low speed; not fast"
+    },
+    {
+        "word": "small",
+        "meaning": "of a size that is less than normal or usual; not large"
+    },
+    {
+        "word": "soft",
+        "meaning": "having a smooth and gentle texture; not hard or firm"
+    },
+    {
+        "word": "solid",
+        "meaning": "firm and stable in shape; not liquid or gas"
+    },
+    {
+        "word": "special",
+        "meaning": "better, greater, or otherwise different from what is usual"
+    },
+    {
+        "word": "strange",
+        "meaning": "unusual or surprising in a way that is unsettling or hard to understand"
+    },
+    {
+        "word": "thin",
+        "meaning": "having a small distance between opposite sides; not thick"
+    },
+    {
+        "word": "white",
+        "meaning": "having the color of milk or fresh snow; the opposite of black"
+    },
+    {
+        "word": "wrong",
+        "meaning": "not correct or true; incorrect"
     }
 ]

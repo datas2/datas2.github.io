@@ -1,14 +1,402 @@
 [
     {
-        "word": "build",
-        "meaning": "to make something"
-    },
-    {
         "word": "come",
         "meaning": "to move toward"
     },
     {
+        "word": "get",
+        "meaning": "to receive something"
+    },
+    {
         "word": "give",
         "meaning": "to provide something"
+    },
+    {
+        "word": "go",
+        "meaning": "to move from one place to another"
+    },
+    {
+        "word": "keep",
+        "meaning": "to have or retain something"
+    },
+    {
+        "word": "let",
+        "meaning": "to allow or permit something"
+    },
+    {
+        "word": "make",
+        "meaning": "to create or produce something"
+    },
+    {
+        "word": "put",
+        "meaning": "to place something in a particular position"
+    },
+    {
+        "word": "seem",
+        "meaning": "to appear to be something"
+    },
+    {
+        "word": "take",
+        "meaning": "to acquire or receive something"
+    },
+    {
+        "word": "be",
+        "meaning": "to exist or to have a particular quality"
+    },
+    {
+        "word": "do",
+        "meaning": "to perform an action or task"
+    },
+    {
+        "word": "have",
+        "meaning": "to possess or own something"
+    },
+    {
+        "word": "say",
+        "meaning": "to express something in words"
+    },
+    {
+        "word": "see",
+        "meaning": "to perceive with the eyes"
+    },
+    {
+        "word": "send",
+        "meaning": "to cause something to go or be taken to a particular destination"
+    },
+    {
+        "word": "may",
+        "meaning": "used to express possibility or permission"
+    },
+    {
+        "word": "will",
+        "meaning": "used to indicate future tense or willingness"
+    },
+    {
+        "word": "about",
+        "meaning": "concerning or relating to something"
+    },
+    {
+        "word": "across",
+        "meaning": "from one side to the other"
+    },
+    {
+        "word": "after",
+        "meaning": "following in time or order"
+    },
+    {
+        "word": "against",
+        "meaning": "in opposition to something"
+    },
+    {
+        "word": "among",
+        "meaning": "in the midst of or surrounded by"
+    },
+    {
+        "word": "at",
+        "meaning": "used to indicate a specific location or time"
+    },
+    {
+        "word": "before",
+        "meaning": "preceding in time or order"
+    },
+    {
+        "word": "between",
+        "meaning": "in the middle of two things"
+    },
+    {
+        "word": "by",
+        "meaning": "indicating the means of achieving something"
+    },
+    {
+        "word": "down",
+        "meaning": "toward a lower place or position"
+    },
+    {
+        "word": "from",
+        "meaning": "indicating the point of origin or starting point"
+    },
+    {
+        "word": "in",
+        "meaning": "inside or within something"
+    },
+    {
+        "word": "off",
+        "meaning": "away from a place or position"
+    },
+    {
+        "word": "on",
+        "meaning": "indicating a position above or supported by something"
+    },
+    {
+        "word": "over",
+        "meaning": "above or higher than something"
+    },
+    {
+        "word": "through",
+        "meaning": "from one side to the other of something"
+    },
+    {
+        "word": "to",
+        "meaning": "indicating the direction or destination of something"
+    },
+    {
+        "word": "under",
+        "meaning": "below or beneath something"
+    },
+    {
+        "word": "up",
+        "meaning": "toward a higher place or position"
+    },
+    {
+        "word": "with",
+        "meaning": "accompanied by or having something"
+    },
+    {
+        "word": "as",
+        "meaning": "used to indicate a role or function"
+    },
+    {
+        "word": "for",
+        "meaning": "used to indicate the purpose or intended recipient of something"
+    },
+    {
+        "word": "of",
+        "meaning": "used to indicate belonging or association"
+    },
+    {
+        "word": "till",
+        "meaning": "until a particular time or event"
+    },
+    {
+        "word": "a",
+        "meaning": "used to indicate a single item or individual"
+    },
+    {
+        "word": "the",
+        "meaning": "used to indicate a specific item or individual"
+    },
+    {
+        "word": "all",
+        "meaning": "the whole quantity or extent of something"
+    },
+    {
+        "word": "any",
+        "meaning": "used to refer to one or more unspecified things"
+    },
+    {
+        "word": "every",
+        "meaning": "used to refer to all the individual members of a group"
+    },
+    {
+        "word": "little",
+        "meaning": "small in size or amount"
+    },
+    {
+        "word": "much",
+        "meaning": "a large amount or quantity of something"
+    },
+    {
+        "word": "no",
+        "meaning": "not any; not a single one"
+    },
+    {
+        "word": "other",
+        "meaning": "used to refer to a different person or thing"
+    },
+    {
+        "word": "some",
+        "meaning": "an unspecified amount or number of something"
+    },
+    {
+        "word": "such",
+        "meaning": "of the same kind or type as something else"
+    },
+    {
+        "word": "that",
+        "meaning": "used to indicate a specific thing or person"
+    },
+    {
+        "word": "this",
+        "meaning": "used to indicate a specific thing or person that is close by"
+    },
+    {
+        "word": "I",
+        "meaning": "used by a speaker to refer to themselves"
+    },
+    {
+        "word": "you",
+        "meaning": "used to refer to the person or people being addressed"
+    },
+    {
+        "word": "he",
+        "meaning": "used to refer to a male person or animal"
+    },
+    {
+        "word": "she",
+        "meaning": "used to refer to a female person or animal"
+    },
+    {
+        "word": "who",
+        "meaning": "used to refer to a person or people in a question or statement"
+    },
+    {
+        "word": "and",
+        "meaning": "used to connect words or phrases in a sentence"
+    },
+    {
+        "word": "because",
+        "meaning": "used to introduce a reason or explanation for something"
+    },
+    {
+        "word": "but",
+        "meaning": "used to introduce a contrast or exception to something"
+    },
+    {
+        "word": "if",
+        "meaning": "used to introduce a condition or possibility"
+    },
+    {
+        "word": "or",
+        "meaning": "used to connect words or phrases that present alternatives"
+    },
+    {
+        "word": "though",
+        "meaning": "used to introduce a contrast or concession in a sentence"
+    },
+    {
+        "word": "while",
+        "meaning": "used to indicate that two actions are happening at the same time"
+    },
+    {
+        "word": "how",
+        "meaning": "used to ask about the manner or way in which something is done"
+    },
+    {
+        "word": "when",
+        "meaning": "used to ask about the time at which something happens"
+    },
+    {
+        "word": "where",
+        "meaning": "used to ask about the place or location of something"
+    },
+    {
+        "word": "why",
+        "meaning": "used to ask about the reason or cause of something"
+    },
+    {
+        "word": "again",
+        "meaning": "once more; another time"
+    },
+    {
+        "word": "ever",
+        "meaning": "at any time; always"
+    },
+    {
+        "word": "far",
+        "meaning": "at a great distance"
+    },
+    {
+        "word": "forward",
+        "meaning": "toward the front or ahead"
+    },
+    {
+        "word": "here",
+        "meaning": "in, at, or to this place or position"
+    },
+    {
+        "word": "near",
+        "meaning": "at a short distance away"
+    },
+    {
+        "word": "now",
+        "meaning": "at the present time or moment"
+    },
+    {
+        "word": "out",
+        "meaning": "away from the inside or center of something"
+    },
+    {
+        "word": "still",
+        "meaning": "continuing to happen or exist without change"
+    },
+    {
+        "word": "then",
+        "meaning": "at that time; at the time in question"
+    },
+    {
+        "word": "there",
+        "meaning": "in, at, or to that place or position"
+    },
+    {
+        "word": "together",
+        "meaning": "in or into one place or group; with each other"
+    },
+    {
+        "word": "well",
+        "meaning": "in a good or satisfactory manner"
+    },
+    {
+        "word": "almost",
+        "meaning": "very nearly; not quite"
+    },
+    {
+        "word": "enough",
+        "meaning": "sufficient for a particular purpose or need"
+    },
+    {
+        "word": "even",
+        "meaning": "used to emphasize something surprising or unexpected"
+    },
+    {
+        "word": "not",
+        "meaning": "used to indicate the negation or absence of something"
+    },
+    {
+        "word": "only",
+        "meaning": "used to indicate that something is the single or exclusive one"
+    },
+    {
+        "word": "quite",
+        "meaning": "to a considerable extent or degree"
+    },
+    {
+        "word": "so",
+        "meaning": "used to indicate a result or consequence of something"
+    },
+    {
+        "word": "very",
+        "meaning": "to a great degree; extremely"
+    },
+    {
+        "word": "tomorrow",
+        "meaning": "the day after today"
+    },
+    {
+        "word": "yesterday",
+        "meaning": "the day before today"
+    },
+    {
+        "word": "north",
+        "meaning": "the direction that is opposite to south"
+    },
+    {
+        "word": "south",
+        "meaning": "the direction that is opposite to north"
+    },
+    {
+        "word": "east",
+        "meaning": "the direction that is opposite to west"
+    },
+    {
+        "word": "west",
+        "meaning": "the direction that is opposite to east"
+    },
+    {
+        "word": "please",
+        "meaning": "used to politely ask for something or to express gratitude"
+    },
+    {
+        "word": "yes",
+        "meaning": "used to express agreement or affirmation"
     }
 ]

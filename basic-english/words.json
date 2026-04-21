@@ -598,5 +598,405 @@
     {
         "word": "wrong",
         "meaning": "not correct or true; incorrect"
+    },
+    {
+        "word": "able",
+        "meaning": "having the power, skill, means, or opportunity to do something"
+    },
+    {
+        "word": "acid",
+        "meaning": "a chemical substance that neutralizes alkalis, dissolves some metals, and turns litmus red"
+    },
+    {
+        "word": "angry",
+        "meaning": "feeling or showing strong annoyance, displeasure, or hostility"
+    },
+    {
+        "word": "automatic",
+        "meaning": "working by itself with little or no direct human control"
+    },
+    {
+        "word": "beautiful",
+        "meaning": "pleasing the senses or mind aesthetically"
+    },
+    {
+        "word": "black",
+        "meaning": "of the very darkest color owing to the absence of or complete absorption of light"
+    },
+    {
+        "word": "boiling",
+        "meaning": "reaching or having reached the temperature at which a liquid boils"
+    },
+    {
+        "word": "bright",
+        "meaning": "giving out or reflecting a lot of light; shining"
+    },
+    {
+        "word": "broken",
+        "meaning": "having been damaged or fractured; no longer in one piece or in working order"
+    },
+    {
+        "word": "brown",
+        "meaning": "of a color produced by mixing red, yellow, and blue, or by mixing orange and black"
+    },
+    {
+        "word": "cheap",
+        "meaning": "low in price; inexpensive"
+    },
+    {
+        "word": "chemical",
+        "meaning": "relating to chemistry or the interactions of substances as studied in chemistry"
+    },
+    {
+        "word": "chief",
+        "meaning": "most important or main"
+    },
+    {
+        "word": "clean",
+        "meaning": "free from dirt, marks, or stains"
+    },
+    {
+        "word": "clear",
+        "meaning": "easy to perceive, understand, or interpret"
+    },
+    {
+        "word": "common",
+        "meaning": "occurring, found, or done often; prevalent"
+    },
+    {
+        "word": "complex",
+        "meaning": "consisting of many different and connected parts"
+    },
+    {
+        "word": "conscious",
+        "meaning": "aware of and responding to one's surroundings; awake"
+    },
+    {
+        "word": "cut",
+        "meaning": "to make an opening, incision, or wound in something with a sharp-edged tool or object"
+    },
+    {
+        "word": "deep",
+        "meaning": "extending far down from the top or surface; far from the bottom or the end of something"
+    },
+    {
+        "word": "dependent",
+        "meaning": "relying on or requiring the aid or support of another"
+    },
+    {
+        "word": "early",
+        "meaning": "happening or done before the usual or expected time"
+    },
+    {
+        "word": "elastic",
+        "meaning": "able to resume its normal shape spontaneously after being stretched or compressed"
+    },
+    {
+        "word": "electric",
+        "meaning": "relating to, operated by, or producing electricity"
+    },
+    {
+        "word": "equal",
+        "meaning": "being the same in quantity, size, degree, or value"
+    },
+    {
+        "word": "fat",
+        "meaning": "having a large amount of excess flesh"
+    },
+    {
+        "word": "fertile",
+        "meaning": "capable of producing abundant vegetation or crops; highly productive"
+    },
+    {
+        "word": "first",
+        "meaning": "coming before all others in time or order; earliest"
+    },
+    {
+        "word": "fixed",
+        "meaning": "fastened securely in position; not subject to change"
+    },
+    {
+        "word": "flat",
+        "meaning": "having a level surface; without raised areas or indentations"
+    },
+    {
+        "word": "free",
+        "meaning": "not under the control or in the power of another; able to act or be done as one wishes"
+    },
+    {
+        "word": "frequent",
+        "meaning": "occurring or done on many occasions; habitual"
+    },
+    {
+        "word": "full",
+        "meaning": "containing or holding as much or as many as possible; having no empty space"
+    },
+    {
+        "word": "general",
+        "meaning": "affecting or concerning all or most people, places, or things; widespread"
+    },
+    {
+        "word": "good",
+        "meaning": "having desirable or positive qualities; beneficial"
+    },
+    {
+        "word": "great",
+        "meaning": "of an extent, amount, or intensity considerably above the normal or average"
+    },
+    {
+        "word": "gray",
+        "meaning": "of a color intermediate between black and white; lacking strong color"
+    },
+    {
+        "word": "hanging",
+        "meaning": "an act of suspending someone or something from above with the support of a rope, chain, or similar device"
+    },
+    {
+        "word": "happy",
+        "meaning": "feeling or showing pleasure or contentment"
+    },
+    {
+        "word": "hard",
+        "meaning": "solid, firm, and resistant to pressure; not easily broken, bent, or pierced"
+    },
+    {
+        "word": "healthy",
+        "meaning": "in good health; free from illness or injury"
+    },
+    {
+        "word": "high",
+        "meaning": "of great vertical extent; tall or elevated"
+    },
+    {
+        "word": "hollow",
+        "meaning": "having a space or cavity inside; not solid"
+    },
+    {
+        "word": "important",
+        "meaning": "of great significance or value; likely to have a profound effect on success, survival, or well-being"
+    },
+    {
+        "word": "kind",
+        "meaning": "having or showing a friendly, generous, and considerate nature"
+    },
+    {
+        "word": "like",
+        "meaning": "having similar qualities or characteristics; resembling"
+    },
+    {
+        "word": "living",
+        "meaning": "having life; not dead"
+    },
+    {
+        "word": "long",
+        "meaning": "measuring a great distance from end to end; extending a great distance"
+    },
+    {
+        "word": "male",
+        "meaning": "having the characteristics of a man or boy; masculine"
+    },
+    {
+        "word": "married",
+        "meaning": "having a spouse; united in marriage"
+    },
+    {
+        "word": "material",
+        "meaning": "the matter from which a thing is or can be made"
+    },
+    {
+        "word": "medical",
+        "meaning": "relating to the science or practice of medicine"
+    },
+    {
+        "word": "military",
+        "meaning": "relating to or characteristic of soldiers or armed forces"
+    },
+    {
+        "word": "natural",
+        "meaning": "existing in or caused by nature; not made or caused by humans"
+    },
+    {
+        "word": "necessary",
+        "meaning": "required to be done, achieved, or present; essential"
+    },
+    {
+        "word": "new",
+        "meaning": "not existing before; made, introduced, or discovered recently or now for the first time"
+    },
+    {
+        "word": "normal",
+        "meaning": "conforming to a standard; usual, typical, or expected"
+    },
+    {
+        "word": "open",
+        "meaning": "allowing access, passage, or view; not closed or blocked"
+    },
+    {
+        "word": "parallel",
+        "meaning": "extending in the same direction, equidistant at all points, and never converging or diverging"
+    },
+    {
+        "word": "past",
+        "meaning": "gone by in time and no longer existing; former"
+    },
+    {
+        "word": "physical",
+        "meaning": "relating to the body as opposed to the mind; tangible or concrete"
+    },
+    {
+        "word": "political",
+        "meaning": "relating to the government or public affairs of a country"
+    },
+    {
+        "word": "poor",
+        "meaning": "lacking sufficient money to live at a standard considered comfortable or normal in a society"
+    },
+    {
+        "word": "possible",
+        "meaning": "able to be done or achieved; within the power or capacity of someone or something"
+    },
+    {
+        "word": "present",
+        "meaning": "existing or occurring now; in a particular place"
+    },
+    {
+        "word": "private",
+        "meaning": "belonging to or for the use of one particular person or group; not public"
+    },
+    {
+        "word": "probable",
+        "meaning": "likely to happen or be true; having a high likelihood of occurring or being the case"
+    },
+    {
+        "word": "quick",
+        "meaning": "moving fast or doing something in a short time; prompt"
+    },
+    {
+        "word": "quiet",
+        "meaning": "making little or no noise; calm and peaceful"
+    },
+    {
+        "word": "ready",
+        "meaning": "prepared mentally or physically for some experience or action"
+    },
+    {
+        "word": "red",
+        "meaning": "of a color at the end of the spectrum next to orange and opposite violet; resembling the color of blood or cherries"
+    },
+    {
+        "word": "regular",
+        "meaning": "conforming to a standard; usual, typical, or expected"
+    },
+    {
+        "word": "responsible",
+        "meaning": "having an obligation to do something, or having control over or care for someone, as part of one's job or role"
+    },
+    {
+        "word": "right",
+        "meaning": "morally good, justified, or acceptable; true or correct as a fact"
+    },
+    {
+        "word": "round",
+        "meaning": "having a curved shape; not flat or angular"
+    },
+    {
+        "word": "same",
+        "meaning": "identical; not different"
+    },
+    {
+        "word": "second",
+        "meaning": "coming after the first in position, order, or time"
+    },
+    {
+        "word": "separate",
+        "meaning": "forming or viewed as a unit apart or by itself"
+    },
+    {
+        "word": "serious",
+        "meaning": "having important or dangerous consequences; requiring careful consideration"
+    },
+    {
+        "word": "sharp",
+        "meaning": "having a thin edge or point that can cut or pierce; keen or acute"
+    },
+    {
+        "word": "smooth",
+        "meaning": "having an even and regular surface; free from roughness or projections"
+    },
+    {
+        "word": "sticky",
+        "meaning": "having the property of adhering or sticking to a surface or substance"
+    },
+    {
+        "word": "stiff",
+        "meaning": "not easily bent or changed in shape; rigid"
+    },
+    {
+        "word": "straight",
+        "meaning": "extending or moving uniformly in one direction only; not curved or bent"
+    },
+    {
+        "word": "strong",
+        "meaning": "having the power to move heavy weights or perform other physically demanding tasks; having great physical strength"
+    },
+    {
+        "word": "sudden",
+        "meaning": "occurring or done quickly and unexpectedly; without warning"
+    },
+    {
+        "word": "sweet",
+        "meaning": "having the pleasant taste characteristic of sugar or honey; pleasing to the senses"
+    },
+    {
+        "word": "tall",
+        "meaning": "having a greater than average height; high in stature"
+    },
+    {
+        "word": "thick",
+        "meaning": "having a large distance between opposite sides; not thin"
+    },
+    {
+        "word": "tight",
+        "meaning": "fixed, fastened, or closed firmly; not loose"
+    },
+    {
+        "word": "tired",
+        "meaning": "in need of sleep or rest; weary"
+    },
+    {
+        "word": "true",
+        "meaning": "in accordance with fact or reality; accurate or exactly representing the truth"
+    },
+    {
+        "word": "violent",
+        "meaning": "using or involving physical force intended to hurt, damage, or kill someone or something"
+    },
+    {
+        "word": "waiting",
+        "meaning": "remaining in a place or remaining inactive until a particular time or event"
+    },
+    {
+        "word": "warm",
+        "meaning": "having or giving out a moderate degree of heat; comfortably hot"
+    },
+    {
+        "word": "wet",
+        "meaning": "covered or saturated with water or another liquid"
+    },
+    {
+        "word": "wide",
+        "meaning": "having a great extent from side to side; broad"
+    },
+    {
+        "word": "wise",
+        "meaning": "having or showing experience, knowledge, and good judgment"
+    },
+    {
+        "word": "yellow",
+        "meaning": "of a color like that of egg yolk, ripe lemons, or gold; between green and orange in the spectrum"
+    },
+    {
+        "word": "young",
+        "meaning": "having lived or existed for only a short time; not old"
     }
 ]

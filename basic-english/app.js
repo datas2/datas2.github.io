@@ -378,8 +378,7 @@ function showCurrentWord() {
 	// Front and back show the same word
 	wordFrontEl.textContent = currentWord.word;
 	wordBackEl.textContent = currentWord.word;
-	//meaningEl.textContent = currentWord.meaning;
-	meaningEl.textContent = "";
+	meaningEl.textContent = currentWord.meaning;
 
 	// Always start by showing the front
 	if (flashcardContainer) {
